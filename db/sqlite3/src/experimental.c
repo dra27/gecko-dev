@@ -15,6 +15,7 @@
 ** $Id: experimental.c,v 1.1 2005/06/10 01:27:31 vladimir%pobox.com Exp $
 */
 #include "sqliteInt.h"
+#include "os.h"
 
 /*
 ** Set all the parameters in the compiled SQL statement to NULL.
