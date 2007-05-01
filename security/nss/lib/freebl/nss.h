@@ -1,3 +1,15 @@
+/***********************************************************************
+ *
+ * A copy of nss.h from NSS 3.11.4 for the directories that make up the
+ * NSS cryptographic module (lib/freebl and lib/softoken).
+ *
+ * When compiling in these directories, the compiler uses the local copy
+ * of nss.h, allowing the NSS cryptographic module to stay at version
+ * 3.11.4 (the version submitted to NIST for FIPS 140-2 validation).
+ *
+ * DO NOT CHANGE THIS FILE.
+ *
+ ***********************************************************************/
 /*
  * NSS utility functions
  *
@@ -36,7 +48,7 @@
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-/* $Id: nss.h,v 1.43 2005/07/08 04:41:29 julien.pierre.bugs%sun.com Exp $ */
+/* $Id$ */
 
 #ifndef __nss_h_
 #define __nss_h_
@@ -45,28 +57,26 @@
 
 SEC_BEGIN_PROTOS
 
-/* The private macro _NSS_ECC_STRING is for NSS internal use only. */
-#ifdef NSS_ENABLE_ECC
-#ifdef NSS_ECC_MORE_THAN_SUITE_B
-#define _NSS_ECC_STRING " Extended ECC"
-#else
-#define _NSS_ECC_STRING " Basic ECC"
-#endif
-#else
-#define _NSS_ECC_STRING ""
-#endif
-
 /*
  * NSS's major version, minor version, patch level, and whether
  * this is a beta release.
  *
  * The format of the version string should be
- *     "<major version>.<minor version>[.<patch level>][ <ECC>][ <Beta>]"
+ *     "<major version>.<minor version>[.<patch level>] [<Beta>]"
  */
-#define NSS_VERSION  "3.11.5" _NSS_ECC_STRING
+/* ***** DO NOT CHANGE THIS FILE. ***** */
+#ifdef NSS_ENABLE_ECC
+#ifdef NSS_ECC_MORE_THAN_SUITE_B
+#define NSS_VERSION  "3.11.4 Extended ECC"
+#else
+#define NSS_VERSION  "3.11.4 Basic ECC"
+#endif
+#else
+#define NSS_VERSION  "3.11.4"
+#endif
 #define NSS_VMAJOR   3
 #define NSS_VMINOR   11
-#define NSS_VPATCH   5
+#define NSS_VPATCH   4
 #define NSS_BETA     PR_FALSE
 
 /*
