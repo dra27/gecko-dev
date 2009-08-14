@@ -79,6 +79,7 @@ ifeq ($(OS_ARCH), Windows_NT)
 endif
 ifeq (CYGWIN_NT,$(findstring CYGWIN_NT,$(OS_ARCH)))
 	OS_RELEASE := $(patsubst CYGWIN_NT-%,%,$(OS_ARCH))
+	OS_RELEASE := $(patsubst %-WOW64,%,$(OS_RELEASE))
 	OS_ARCH    := WINNT
 endif
 ifeq ($(OS_ARCH), CYGWIN32_NT)

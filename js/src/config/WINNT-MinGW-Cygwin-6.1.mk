@@ -38,7 +38,7 @@
 # ***** END LICENSE BLOCK *****
 
 #
-# Config stuff for Windows NT 5.0
+# Config stuff for Windows Vista (using MinGW under Cygwin)
 #
 
-include $(DEPTH)/config/WINNT5.0.mk
+include $(DEPTH)/config/WINNT-MinGW-Cygwin-6.0.mk

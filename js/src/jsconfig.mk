@@ -111,7 +111,7 @@ SHIP_LIBS      = libjs.$(SO_SUFFIX) libjs.a
 ifdef JS_LIVECONNECT
   SHIP_LIBS   += libjsj.$(SO_SUFFIX) libjsj.a
 endif
-ifeq ($(OS_ARCH), WINNT)
+ifdef USE_MSVC
   SHIP_LIBS    = js32.dll js32.lib
   ifdef JS_LIVECONNECT
     SHIP_LIBS += jsj.dll jsj.lib

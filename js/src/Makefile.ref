@@ -91,14 +91,14 @@ LDFLAGS += -lm
 endif
 
 # Prevent floating point errors caused by VC++ optimizations
-ifeq ($(OS_ARCH),WINNT)
+ifdef USE_MSVC
 _MSC_VER = $(shell $(CC) 2>&1 | sed -n 's/.*Compiler Version \([0-9]*\)\.\([0-9]*\).*/\1\2/p')
 ifeq (,$(filter-out 1200 1300 1310,$(_MSC_VER)))
 CFLAGS += -Op
 else
 CFLAGS += -fp:precise
 endif
-endif # WINNT
+endif # USE_MSVC
 
 #
 # Ask perl what flags it was built with, so we can build js with similar flags
@@ -279,7 +279,7 @@ PROGRAM = $(OBJDIR)/js.exe
 else
 LIBRARY = $(OBJDIR)/libjs.a
 SHARED_LIBRARY = $(OBJDIR)/libjs.$(SO_SUFFIX)
-PROGRAM = $(OBJDIR)/js
+PROGRAM = $(OBJDIR)/js$(HOST_BIN_SUFFIX)
 ifdef JS_PERLCONNECT
 PROG_LIBS += $(PERLLDFLAGS)
 endif
@@ -323,7 +323,7 @@ $(OBJDIR)/jskwgen.o: jskwgen.c jskeyword.tbl
 	$(CC) -o $@ -c $(CFLAGS) $<
 
 $(OBJDIR)/jskwgen$(HOST_BIN_SUFFIX): $(OBJDIR)/jskwgen.$(OBJ_SUFFIX)
-	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $^
+	$(CC) -o $@ $(CFLAGS) $(LDFLAGS) $(EXE_LINK_FLAGS) $^
 
 endif
 
@@ -336,7 +336,7 @@ $(PROGRAM): $(PROG_OBJS) $(LIBRARY)
 	link.exe -out:"$@" $(EXE_LINK_FLAGS) $^
 else
 $(PROGRAM): $(PROG_OBJS) $(LIBRARY)
-	$(CC) -o $@ $(CFLAGS) $(PROG_OBJS) $(LIBRARY) $(LDFLAGS) $(OTHER_LIBS) \
+	$(CC) -o $@ $(CFLAGS) $(PROG_OBJS) $(LIBRARY) $(LDFLAGS) $(EXE_LINK_FLAGS) $(OTHER_LIBS) \
 	    $(PROG_LIBS)
 endif
 
