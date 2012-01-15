@@ -5,6 +5,7 @@
 # under MinGW on a Win32 platform. [September 6 2008]
 # 
 # Further hacked by David Allsopp 13-Aug-2009 for Windows 7 RC Cygwin compilation
+# Revised 15-Jan-2012 for cross-compilation with mingw64 compilers
 #
 
 
@@ -12,9 +13,10 @@
 # Config for all versions of Linux
 #
 
-CC = gcc -mno-cygwin
-CCC = g++ -mno-cygwin
-LD = g++ -mno-cygwin
+PREFIX = i686-w64-mingw32-
+CC = $(PREFIX)gcc
+CCC = $(PREFIX)g++
+LD = $(PREFIX)g++
 CFLAGS += -Wall -Wno-format
 
 OS_CFLAGS = -D_X86_=1 -DXP_WIN -DXP_WIN32 -DWIN32 -D_WINDOWS -D_WIN32 -DWINVER=0x600 -D_WIN32_WINNT=0x600 -D_MINGW -DEXPORT_JS_API
@@ -43,7 +45,7 @@ STATICLIB=$(OBJDIR)/libjs_implib.a
 XMKSHLIBOPTS += -Wl,--output-def=$(DEFFILE) -Wl,--out-implib=$(STATICLIB)
 
 
-RANLIB = ranlib
+RANLIB = $(PREFIX)ranlib
 MKSHLIB = $(LD) -shared $(XMKSHLIBOPTS)
 
 #.c.o:
