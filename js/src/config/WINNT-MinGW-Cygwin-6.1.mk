@@ -38,7 +38,10 @@
 # ***** END LICENSE BLOCK *****
 
 #
-# Config stuff for Windows Vista (using MinGW under Cygwin)
+# Config for mingw-w64 i686 via Cygwin on Windows 7
 #
 
-include $(DEPTH)/config/WINNT-MinGW-Cygwin-6.0.mk
+TOOLPREF = i686-w64-mingw32-
+OS_WINVER = 0x600
+
+include $(DEPTH)/config/WINNT-MinGW.mk
