@@ -34,7 +34,7 @@ SO_SUFFIX=dll
 JSDLL_CFLAGS = -DEXPORT_JS_API
 PREBUILT_CPUCFG = 1
 
-LIB_LINK_FLAGS= --add-stdcall-alias -L./fdlibm/$(OBJDIR) -lfdm
+LIB_LINK_FLAGS= -Wl,--add-stdcall-alias -L./fdlibm/$(OBJDIR) -lfdm
 EXE_LINK_FLAGS= 
 
 # LIB_LINK_FLAGS=-lkernel32 -luser32 -lgdi32 -lwinspool -lcomdlg32 -ladvapi32 -lshell32 -lole32 -loleaut32 -luuid -lwinmm
