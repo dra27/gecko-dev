@@ -1,0 +1,4 @@
+(library
+  (name SpiderMonkey)
+  (public_name SpiderMonkey)
+  (modules))

@@ -1,0 +1,8 @@
+(install
+  (section lib)
+  (files js.msg jsbool.h jsdate.h jsfile.h jsiter.h jsnum.h jsparse.h jsscan.h jstypes.h jsapi.h
+         jsclist.h jsdbgapi.h jsfile.msg jskeyword.tbl jsobj.h jsprf.h jsscope.h jsutil.h jsarena.h
+         jscntxt.h jsdhash.h jsfun.h jslibmath.h jsopcode.h jsproto.tbl jsscript.h jsxdrapi.h
+         jsarray.h jscompat.h jsdtoa.h jsgc.h jslock.h jsopcode.tbl jsprvtd.h jsshell.msg jsxml.h
+         jsatom.h jsconfig.h jsemit.h jshash.h jslong.h jsosdep.h jspubtd.h jsstddef.h prmjtime.h
+         jsbit.h jscpucfg.h jsexn.h jsinterp.h jsmath.h jsotypes.h jsregexp.h jsstr.h resource.h))

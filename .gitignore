@@ -1,2 +1,4 @@
 js/src/*.OBJ/
 js/src/fdlibm/*.OBJ/
+_build
+.merlin

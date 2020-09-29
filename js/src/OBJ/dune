@@ -1,0 +1,14 @@
+(rule
+  (targets libjs.dll libjs.def libjs.a libjs_implib.a jsautokw.h)
+  (deps (source_tree ..))
+  (action (with-outputs-to build.log (progn
+    (run make -C ../fdlibm -f Makefile.ref OS_OBJTYPE=-MinGW-Cygwin- OBJDIR=OBJ BUILD_OPT=1)
+    (run make -C .. -f Makefile.ref OS_OBJTYPE=-MinGW-Cygwin- OBJDIR=OBJ BUILD_OPT=1)))))
+
+(install
+  (section bin)
+  (files libjs.dll))
+
+(install
+  (section lib)
+  (files libjs.def libjs.a libjs_implib.a jsautokw.h))
